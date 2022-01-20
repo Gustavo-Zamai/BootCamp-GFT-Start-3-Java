@@ -1,7 +1,18 @@
 public abstract class Account implements AccountInterface{
-    private int agency;
-    private int countCode;
-    private double balance;
+    private static int STANDARD_AGENCY = 1;
+    private static int SEQUENTIAL = 1;
+
+    protected int agency;
+    protected int countCode;
+    protected double balance;
+
+    public Account(){
+        this.agency = STANDARD_AGENCY;
+        this.countCode = SEQUENTIAL++;
+    }
+
+
+
 
     @Override
     public void withdraw(double value) {
