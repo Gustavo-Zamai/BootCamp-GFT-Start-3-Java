@@ -5,4 +5,6 @@ public interface AccountInterface {
 
     void transfer(double value, Account destinyAccount);
 
+    void printExtract();
+
 }

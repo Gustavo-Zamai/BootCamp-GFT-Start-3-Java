@@ -7,7 +7,7 @@ public class Clients {
         return name;
     }
 
-    public void setName(){
+    public void setName(String string){
         this.name = name;
     }
 

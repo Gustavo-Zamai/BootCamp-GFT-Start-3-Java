@@ -5,10 +5,12 @@ public abstract class Account implements AccountInterface{
     protected int agency;
     protected int countCode;
     protected double balance;
+    protected Clients client;
 
-    public Account(){
+    public Account(Clients client){
         this.agency = STANDARD_AGENCY;
         this.countCode = SEQUENTIAL++;
+        this.client = client;
     }
 
 
@@ -16,19 +18,20 @@ public abstract class Account implements AccountInterface{
 
     @Override
     public void withdraw(double value) {
-        
+        this.balance = balance - value;
         
     }
 
     @Override
     public void deposit(double value) {
-        
+        this.balance = balance + value;
         
     }
 
     @Override
     public void transfer(double value, Account destinyAccount) {
-        
+        this.withdraw(value);
+        destinyAccount.deposit(value);
         
     }
 
@@ -42,6 +45,13 @@ public abstract class Account implements AccountInterface{
 
     public double getBalance(){
         return balance;
+    }
+
+    protected void printCommonInfo(){
+        System.out.println(String.format("Holder: %s", this.client.getName()));
+        System.out.println(String.format("Agency: %d", this.agency));
+        System.out.println(String.format("Count Code: %d", this.countCode));
+        System.out.println(String.format("Balance:U$ %.2f", this.balance));
     }
 
 
