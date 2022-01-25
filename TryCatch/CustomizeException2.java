@@ -11,7 +11,7 @@ public class CustomizeException2 {
                 throw new DivisaoNaoExataException("Divisão não exata!", numerador[i], denominador[i]);
             int resultado = numerador[i] / denominador[i];
             System.out.println(resultado);
-            } catch (DivisaoNaoExataException e) {
+            } catch (DivisaoNaoExataException | ArithmeticException | ArrayIndexOutOfBoundsException e) {
                 e.printStackTrace();
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }
